@@ -1,0 +1,146 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg rounded-4 border-0">
+        <!-- Header -->
+        <div
+          class="card-header text-white text-center p-4"
+          [ngStyle]="{ background: getBackground() }"
+        >
+          <h1 class="fw-bold">🌤️ Weather App</h1>
+          <p class="fs-5 mt-2">
+            <i class="fas fa-clock"></i> Current Time: {{ currentTime }}
+          </p>
+        </div>
+
+        <!-- City Input Section -->
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control shadow-sm rounded-pill"
+                  placeholder="Enter city name..."
+                  [(ngModel)]="cityName"
+                />
+                <button
+                  class="btn btn-dark px-4 rounded-pill ms-2"
+                  (click)="onGetWeather()"
+                >
+                  🔍Search
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading Spinner -->
+          <div *ngIf="loading" class="text-center mt-3">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+
+          <!-- Error Message -->
+          <div
+            *ngIf="message"
+            class="alert alert-warning alert-dismissible fade show text-center"
+            role="alert"
+          >
+            {{ message }}
+          </div>
+
+          <!-- Weather Info Card -->
+          <div
+            *ngIf="weatherReport?.name"
+            class="card text-center shadow-lg mt-4 border-0 rounded-4"
+            style="background: #f9f9f9"
+          >
+            <div class="card-body">
+              <h3 class="fw-bold">
+                {{ weatherReport?.name }}, {{ weatherReport?.sys?.country }}
+              </h3>
+
+              <!-- Weather Icon -->
+              <img
+                *ngIf="weatherReport?.weather?.[0]?.icon"
+                [src]="
+                  'https://openweathermap.org/img/wn/' +
+                  weatherReport.weather[0].icon +
+                  '@2x.png'
+                "
+                class="weather-icon mt-2"
+                alt="Weather Icon"
+              />
+
+              <!-- Temperature -->
+              <h2
+                class="fw-bold display-4"
+                [ngStyle]="{
+                  color: getTemperatureColor(temp),
+                  transition: '0.5s ease-in-out'
+                }"
+              >
+                {{ temp }} <sup>°C</sup>
+              </h2>
+              <p class="text-muted">
+                Feels Like: {{ feels_like }} <sup>°C</sup>
+              </p>
+
+              <!-- Weather Description -->
+              <p class="lead text-capitalize">
+                {{ weatherReport?.weather?.[0]?.description }}
+              </p>
+
+              <!-- Extra Weather Info -->
+              <div class="row mt-3">
+                <div class="col-md-4">
+                  <p>
+                    <i class="fas fa-wind"></i> <strong>Wind Speed:</strong>
+                    {{ weatherReport?.wind?.speed }} m/s
+                  </p>
+                </div>
+                <div class="col-md-4">
+                  <p>
+                    <i class="fas fa-tint"></i> <strong>Humidity:</strong>
+                    {{ humidity }}%
+                  </p>
+                </div>
+                <div class="col-md-4">
+                  <p>
+                    <i class="fas fa-tachometer-alt"></i>
+                    <strong>Pressure:</strong> {{ pressure }} hPa
+                  </p>
+                </div>
+              </div>
+
+              <!-- Sunrise & Sunset -->
+              <div class="row mt-4">
+                <div class="col-md-6">
+                  <div class="sun-info">
+                    <img src="imagesW/sunrise.png" alt="Sunrise" width="50" />
+                    <p><strong>Sunrise:</strong> {{ sunrise }}</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sun-info">
+                    <img src="imagesW/sunset.png" alt="Sunset" width="50" />
+                    <p><strong>Sunset:</strong> {{ sunset }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="card-footer text-center text-muted">
+          <p>
+            Your Entered City: <strong>{{ cityName }}</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.weather-icon {
+  width: 100px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.sun-info img {
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.sun-info p {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}

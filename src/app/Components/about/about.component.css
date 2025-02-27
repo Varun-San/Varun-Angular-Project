@@ -1,18 +1,14 @@
-/* Hero Section */
-.hero-section {
+/* About Section */
+.about-section {
   background: linear-gradient(135deg, #1e3c72, #2a5298);
   border-radius: 15px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* Feature Cards */
-.feature-card {
+/* Image Styling */
+.img-fluid {
+  max-width: 100%;
   border-radius: 15px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.feature-card:hover {
-  transform: scale(1.05);
 }
 
 /* Responsive Design */

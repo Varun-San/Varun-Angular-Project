@@ -1,18 +1,29 @@
-<nav class="navbar navbar-expand-lg bg-primary">
+<nav
+  class="navbar navbar-expand-lg"
+  style="
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  "
+>
   <div class="container">
     <!-- Brand Logo -->
-    <!-- <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#">
       <img
-        src="assets/bootstrap-logo.svg"
+        src="Images/LOGO (3).png"
         alt="Bootstrap Logo"
-        width="30"
-        height="24"
+        width="50"
+        height="44"
+        style="
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        "
       />
-    </a> -->
+    </a>
 
     <!-- Navbar Toggler for Mobile -->
     <button
-      class="navbar-toggler"
+      class="navbar-toggler text-white border-0"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarNav"
@@ -28,22 +39,56 @@
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a
-            class="nav-link active text-white"
-            aria-current="page"
+            class="nav-link text-white fw-bold"
             routerLink="blog"
             routerLinkActive="router-link-active"
+            style="transition: color 0.3s ease-in-out"
+            onmouseover="this.style.color='#f8b400';"
+            onmouseout="this.style.color='white';"
             >Home</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#">Link</a>
+          <a
+            class="nav-link text-white fw-bold"
+            routerLink="about"
+            routerLinkActive="router-link-active"
+            style="transition: color 0.3s ease-in-out"
+            onmouseover="this.style.color='#f8b400';"
+            onmouseout="this.style.color='white';"
+            >About</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled text-white" aria-disabled="true"
-            >Disabled</a
+          <a
+            class="nav-link text-white fw-bold"
+            routerLink="weather"
+            routerLinkActive="router-link-active"
+            style="transition: color 0.3s ease-in-out"
+            onmouseover="this.style.color='#f8b400';"
+            onmouseout="this.style.color='white';"
+            >Weather</a
           >
         </li>
       </ul>
+      <div class="ms-3">
+        <button
+          class="btn fw-bold"
+          (click)="logout()"
+          style="
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            transition: all 0.3s ease-in-out;
+            border-radius: 8px;
+            padding: 5px 15px;
+          "
+          onmouseover="this.style.background='white'; this.style.color='#2a5298';"
+          onmouseout="this.style.background='transparent'; this.style.color='white';"
+        >
+          Logout
+        </button>
+      </div>
     </div>
   </div>
 </nav>

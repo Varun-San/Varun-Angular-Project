@@ -14,19 +14,36 @@ export class LoginPageComponent {
   loginObj: Login = new Login();
   router = inject(Router);
 
-  hardcodedUser = { email: 'test@123gmai.com', password: '123' };
+  hardcodedUsers = [
+    { email: 'test@123gmail.com', password: '123' },
+    { email: 'varun@gmail.com', password: 'Vs@1718' },
+    {
+      email: 'sathiya',
+      password: 'Vs@1718',
+    },
+  ];
+
+  message: string = ''; // To store the login message
+  messageType: string = ''; // To control the message style (success/error)
 
   login() {
-    if (
-      this.loginObj.EmailId === this.hardcodedUser.email &&
-      this.loginObj.Password === this.hardcodedUser.password
-    ) {
+    const user = this.hardcodedUsers.find(
+      (u) =>
+        u.email === this.loginObj.EmailId &&
+        u.password === this.loginObj.Password
+    );
+
+    if (user) {
       const fakeToken = 'fake-jwt-token-1234567890';
-      localStorage.setItem('authToken', fakeToken);
-      alert('Login successful! Token stored.');
-      this.router.navigateByUrl('layout');
+      sessionStorage.setItem('authToken', fakeToken);
+      this.message = 'Login successful!';
+      this.messageType = 'success';
+      setTimeout(() => {
+        this.router.navigateByUrl('home');
+      }, 1500); // Redirect after 1.5 seconds
     } else {
-      alert('Invalid credentials! Try again.');
+      this.message = 'Invalid credentials! Try again.';
+      this.messageType = 'error';
     }
   }
 }
