@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-12">
+    <div
+      class="card d-flex align-items-center justify-content-center bg-black"
+      style="height: 97vh; width: 100%; overflow: hidden"
+    >
+      <div class="card bg-secondary p-3" style="width: 24rem">
+        <img
+          src="Images/Varun-Angular.png"
+          class="card-img-top"
+          alt="Angular Login"
+        />
+        <div class="card-body">
+          <h2 class="card-title text-center text-white fw-bold">
+            Angular-Login
+          </h2>
+          <div class="mb-3">
+            <div class="col-12 mb-2">
+              <label for="emailId" class="form-label text-white">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="emailId"
+                placeholder="Enter your email..."
+                [(ngModel)]="loginObj.EmailId"
+                required
+              />
+            </div>
+            <div class="col-12 mb-2">
+              <label for="password" class="form-label text-white"
+                >Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Enter your password..."
+                required
+                [(ngModel)]="loginObj.Password"
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-outline-light fw-bold w-100"
+            (click)="login()"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
