@@ -40,7 +40,7 @@ export class LoginPageComponent {
       this.messageType = 'success';
       setTimeout(() => {
         this.router.navigateByUrl('home');
-      }, 1500); // Redirect after 1.5 seconds
+      }, 1000); // Redirect after 1.5 seconds
     } else {
       this.message = 'Invalid credentials! Try again.';
       this.messageType = 'error';
