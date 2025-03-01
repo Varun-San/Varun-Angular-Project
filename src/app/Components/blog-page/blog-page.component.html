@@ -1,32 +1,118 @@
 <div class="container mt-5">
   <!-- Hero Section -->
-  <div class="hero-section text-center text-white p-5 rounded shadow">
-    <h1 class="fw-bold">Welcome to My Website</h1>
-    <p class="lead">Explore amazing content and features</p>
-    <a href="#" class="btn btn-light btn-lg rounded-pill">Get Started</a>
+  <div class="hero-section text-center p-5 rounded shadow">
+    <h1 class="fw-bold">Welcome to My Portfolio</h1>
+    <p class="lead">Building impactful solutions through technology</p>
+    <a href="#project" class="btn btn-light btn-lg rounded-pill"
+      >View Projects</a
+    >
   </div>
 
-  <!-- Features Section -->
-  <div class="row mt-5 text-center">
-    <div class="col-md-4">
-      <div class="card shadow-sm p-4 feature-card">
-        <i class="fas fa-code fa-3x text-primary"></i>
-        <h4 class="mt-3">Modern Design</h4>
-        <p>Clean and attractive UI with smooth animations.</p>
+  <!-- About Me Section -->
+  <div class="row mt-5 align-items-center">
+    <div class="col-lg-6 col-md-12">
+      <div class="card shadow-sm p-4 m-3 feature-card">
+        <h2 class="text-center">Web Developer</h2>
+        <p class="text-start">
+          Hi, I'm <strong>Varun V</strong>, a passionate Software Developer
+          specializing in **Java, HTML, CSS, JavaScript, SQL, and Figma
+          Design**. I focus on innovative solutions that drive success for
+          businesses.
+        </p>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card shadow-sm p-4 feature-card">
-        <i class="fas fa-mobile-alt fa-3x text-success"></i>
-        <h4 class="mt-3">Responsive</h4>
-        <p>Fully optimized for all devices.</p>
-      </div>
+    <div class="col-lg-6 col-md-12 text-center">
+      <img
+        src="Images/profile.jpg"
+        style="height: 250px; width: 200px"
+        class="img-thumbnail"
+        alt="Profile Picture"
+      />
     </div>
-    <div class="col-md-4">
-      <div class="card shadow-sm p-4 feature-card">
-        <i class="fas fa-bolt fa-3x text-warning"></i>
-        <h4 class="mt-3">Fast & Smooth</h4>
-        <p>Lightning-fast performance and seamless experience.</p>
+  </div>
+
+  <!-- Skills Section -->
+  <div class="col-md-12">
+    <div class="card shadow-sm p-4 m-3 feature-card">
+      <h2 class="text-center">Skills</h2>
+      <ul class="fs-5">
+        <li><strong>Programming:</strong> Java, HTML, CSS, JavaScript</li>
+        <li><strong>Database:</strong> SQL, Query Optimization</li>
+        <li><strong>Development Tools:</strong> PyCharm, Arduino, Figma</li>
+        <li>
+          <strong>Additional Skills:</strong> OOP, API Integration,
+          Problem-Solving
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Projects Section -->
+  <div id="projects" class="col-md-12">
+    <div class="card shadow-sm p-4 m-3">
+      <h2 class="text-center">Projects</h2>
+      <div class="row">
+        <!-- Project 1 -->
+        <div class="col-lg-4 col-md-6 col-12 project-card" id="project">
+          <div class="card feature-card p-3">
+            <img
+              src="Images/project1.jpg"
+              class="img-thumbnail mb-3"
+              alt="Project 1"
+            />
+            <h4 class="p-2">AI-Based Automated Billing System</h4>
+            <p class="text-muted">
+              Smart trolley with RFID readers and barcode scanners for automated
+              billing.
+            </p>
+            <ul>
+              <li>RFID-based item scanning</li>
+              <li>Database-driven billing system</li>
+              <li>Email integration for bills</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col-lg-4 col-md-6 col-12 project-card">
+          <div class="card feature-card p-3">
+            <img
+              src="Images/project 2.png"
+              class="img-thumbnail mb-3"
+              alt="Project 2"
+            />
+            <h4 class="p-2">E-Commerce Website</h4>
+            <p class="text-muted">
+              A full-fledged online store with secure payments & product
+              management.
+            </p>
+            <ul>
+              <li>Built with React.js & Firebase</li>
+              <li>Secure user authentication</li>
+              <li>Responsive UI for mobile & desktop</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col-lg-4 col-md-6 col-12 project-card">
+          <div class="card feature-card p-3">
+            <img
+              src="Images/project3.png"
+              class="img-thumbnail mb-3"
+              alt="Project 3"
+            />
+            <h4 class="p-2">Weather App</h4>
+            <p class="text-muted">
+              A weather forecasting app using OpenWeather API.
+            </p>
+            <ul>
+              <li>Live weather updates</li>
+              <li>API integration for real-time data</li>
+              <li>User-friendly UI</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
