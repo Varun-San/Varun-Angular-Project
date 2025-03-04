@@ -5,12 +5,13 @@ import { LayoutComponent } from './Components/layout/layout.component';
 import { AboutComponent } from './Components/about/about.component';
 import { authGuard } from './Guard/auth.guard';
 import { WeatherappComponent } from './Components/weatherapp/weatherapp.component';
+import { PersonalPageComponent } from './Components/personal-page/personal-page.component';
 
 export const routes: Routes = [
   {
     //Default route
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -19,14 +20,14 @@ export const routes: Routes = [
     component: LoginPageComponent,
   },
   {
+    path: 'home',
+    component: BlogPageComponent,
+  },
+  {
     path: '',
     component: LayoutComponent,
     canActivate: [authGuard],
     children: [
-      {
-        path: 'home',
-        component: BlogPageComponent,
-      },
       {
         path: 'layout',
         component: LayoutComponent,
@@ -38,6 +39,10 @@ export const routes: Routes = [
       {
         path: 'weather',
         component: WeatherappComponent,
+      },
+      {
+        path: 'personal',
+        component: PersonalPageComponent,
       },
     ],
   },

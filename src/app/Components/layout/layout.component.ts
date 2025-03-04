@@ -16,6 +16,6 @@ export class LayoutComponent {
   router = inject(Router);
   logout() {
     sessionStorage.removeItem('authToken');
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('home');
   }
 }

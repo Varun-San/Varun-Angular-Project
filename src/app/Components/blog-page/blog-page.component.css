@@ -42,3 +42,33 @@
     margin-bottom: 20px;
   }
 }
+
+.footer {
+  background: linear-gradient(to right, #232526, #414345);
+  color: #ffffff;
+}
+
+.footer a {
+  transition: color 0.3s ease-in-out;
+}
+
+.footer a:hover {
+  color: #f8b400;
+}
+
+.social-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+
+.hero-section2 {
+  background: linear-gradient(to right, #ff7e5f, #ff3f34);
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
