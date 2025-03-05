@@ -1,6 +1,6 @@
 /* About Section */
 .about-section {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  background: linear-gradient(45deg, rgb(0, 198, 255), rgb(0, 123, 255));
   border-radius: 15px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }

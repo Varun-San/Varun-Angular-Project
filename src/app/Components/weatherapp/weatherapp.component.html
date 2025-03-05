@@ -72,6 +72,7 @@
                 "
                 class="weather-icon mt-2"
                 alt="Weather Icon"
+                [ngStyle]="{ background: getBackground() }"
               />
 
               <!-- Temperature -->
@@ -120,13 +121,13 @@
                 <div class="col-md-6">
                   <div class="sun-info">
                     <img src="imagesW/sunrise.png" alt="Sunrise" width="50" />
-                    <p><strong>Sunrise:</strong> {{ sunrise }}</p>
+                    <p>Sunrise: {{ sunrise }}</p>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="sun-info">
                     <img src="imagesW/sunset.png" alt="Sunset" width="50" />
-                    <p><strong>Sunset:</strong> {{ sunset }}</p>
+                    <p>Sunset: {{ sunset }}</p>
                   </div>
                 </div>
               </div>

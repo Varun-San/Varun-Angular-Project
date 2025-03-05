@@ -11,6 +11,27 @@
   font-size: 1.1rem;
   font-weight: bold;
 }
+.weather-icon {
+  background: linear-gradient(45deg, rgb(0, 198, 255), rgb(0, 123, 255));
+  background-size: 200% 200%; /* Allows smooth color transitions */
+  animation: animateWeatherGradient 5s ease infinite alternate;
+
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-radius: 10px;
+  padding: 10px;
+  display: inline-block; /* Ensures proper styling */
+}
+
+/* Gradient Animation */
+@keyframes animateWeatherGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
 
 @keyframes fadeIn {
   from {

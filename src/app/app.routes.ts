@@ -6,6 +6,7 @@ import { AboutComponent } from './Components/about/about.component';
 import { authGuard } from './Guard/auth.guard';
 import { WeatherappComponent } from './Components/weatherapp/weatherapp.component';
 import { PersonalPageComponent } from './Components/personal-page/personal-page.component';
+import { CalcComponent } from './Components/calc/calc.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,10 @@ export const routes: Routes = [
       {
         path: 'personal',
         component: PersonalPageComponent,
+      },
+      {
+        path: 'calc',
+        component: CalcComponent,
       },
     ],
   },

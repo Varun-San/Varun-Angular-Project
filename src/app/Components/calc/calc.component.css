@@ -1,0 +1,157 @@
+:root {
+  --color-interactive: 255, 255, 255;
+  --blending: overlay;
+}
+
+/* Light-themed background with shades of blue */
+.gradient-bg {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    95deg,
+    #ffffff,
+    #e3f2fd,
+    #bbdefb,
+    #ffffff
+  ); /* Soft white and blue */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Interactive glowing effect */
+.interactive {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.8;
+  filter: blur(50px);
+  transition: transform 0.1s ease-out;
+  background: radial-gradient(
+    circle,
+    rgba(33, 150, 243, 0.6) 0%,
+    /* Vibrant Blue */ rgba(0, 188, 212, 0.5) 30%,
+    /* Cyan Blue */ rgba(3, 169, 244, 0.4) 60%,
+    /* Lighter Sky Blue */ rgba(0, 0, 0, 0) 100% /* Fade to Transparent */
+  );
+}
+
+/* Calculator container */
+.calculator {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px; /* Prevents stretching on large screens */
+}
+
+/* Display screen */
+.display {
+  width: 100%;
+  height: 70px;
+  font-size: 2rem;
+  text-align: right;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: #e3f2fd;
+  color: #1565c0;
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 10px rgba(21, 101, 192, 0.2);
+}
+
+/* Button grid layout */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* Default button style */
+button {
+  padding: 15px;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #bbdefb;
+  color: #1565c0;
+  transition: background 0.3s ease, transform 0.15s ease, box-shadow 0.3s ease;
+}
+
+/* Button hover effect */
+button:hover {
+  background: #90caf9;
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px rgba(33, 150, 243, 0.4);
+}
+
+/* Operator buttons */
+button.operator {
+  background: #1976d2;
+  color: white;
+}
+
+button.operator:hover {
+  background: #2196f3;
+  box-shadow: 0px 0px 10px rgba(25, 118, 210, 0.5);
+}
+
+/* Equal button */
+button.equal {
+  background: #0d47a1;
+  color: white;
+}
+
+button.equal:hover {
+  background: #1565c0;
+  box-shadow: 0px 0px 10px rgba(13, 71, 161, 0.5);
+}
+
+/* Clear button */
+button.clear {
+  background: #ef5350;
+  color: white;
+}
+
+button.clear:hover {
+  background: #e53935;
+  box-shadow: 0px 0px 10px rgba(239, 83, 80, 0.5);
+}
+
+/* 📱 Mobile Responsiveness */
+@media (max-width: 600px) {
+  .calculator {
+    max-width: 90%; /* Makes it fit better on smaller screens */
+    padding: 15px;
+  }
+
+  .display {
+    height: 60px;
+    font-size: 1.6rem;
+  }
+
+  .buttons {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 1.2rem;
+  }
+
+  .interactive {
+    width: 250px; /* Reduce interactive effect size */
+    height: 250px;
+    filter: blur(40px);
+  }
+}
+    

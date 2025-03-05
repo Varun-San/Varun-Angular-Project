@@ -16,7 +16,7 @@ export class LoginPageComponent {
 
   hardcodedUsers = [
     { email: 'test@123gmail.com', password: '123' },
-    { email: 'varun@gmail.com', password: 'Vs@1718' },
+    { email: 'varun', password: 'Vs@1718' },
     {
       email: 'sathiya',
       password: 'Vs@1718',
