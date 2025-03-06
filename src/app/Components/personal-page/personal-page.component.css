@@ -71,7 +71,7 @@ body {
 
 /* Buttons */
 .custom-btn {
-  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  background: #ff9e79;
   color: white;
   border: none;
   padding: 12px 25px;
@@ -83,7 +83,7 @@ body {
 }
 
 .custom-btn:hover {
-  background: linear-gradient(90deg, #ff6b81, #ff9e79);
+  background: #ff9e79;
   transform: scale(1.05);
 }
 
@@ -122,7 +122,7 @@ body {
 }
 
 .contact-section .btn {
-  padding: 12px 20px;
+  padding: 6px 10px;
   border-radius: 30px;
   font-weight: bold;
   text-decoration: none;
@@ -139,6 +139,7 @@ body {
 
 .custom-linkedin-btn:hover {
   background: #005582;
+  transform: scale(1.05);
 }
 
 /* GitHub Button */
@@ -147,8 +148,18 @@ body {
   color: white;
 }
 
+/* Instagram Button */
+.custom-instagram-btn {
+  background-color: #c13584;
+  color: white;
+}
+.custom-instagram-btn:hover {
+  transform: scale(1.05);
+}
+
 .custom-github-btn:hover {
   background: #222;
+  transform: scale(1.05);
 }
 
 /* Responsive Design */

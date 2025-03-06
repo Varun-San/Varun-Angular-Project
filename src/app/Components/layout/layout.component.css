@@ -1,11 +1,118 @@
+/* Navbar Styling */
+.navbar {
+  background: linear-gradient(45deg, rgb(0, 123, 255), rgb(0, 198, 255));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+}
+
+/* Logo Styling */
+.navbar-brand img {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Navigation Links */
+.nav-link {
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 8px 15px;
+  transition: color 0.3s ease-in-out;
+  position: relative;
+}
+
+/* Hover Effect */
+.nav-link:hover {
+  color: #fbff00 !important; /* Soft Violet */
+}
+
+/* Active Link Styling */
+.router-link-active {
+  color: #ffffff !important; /* White text */
+  font-weight: bold;
+  position: relative; /* Needed for ::after positioning */
+  padding-bottom: 5px; /* Space for underline */
+}
+
+/* Underline Effect */
+.router-link-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0; /* Start with no underline */
+  height: 33px;
+  background: linear-gradient(to right, #a463f2, #7b1fa2);
+  border-radius: 5px;
+  transition: width 1s ease-in-out;
+  z-index: -1;
+}
+
+/* Expand underline on hover & when active */
+.router-link-active:hover::after,
+.router-link-active::after {
+  width: 100%;
+}
+
+/* Dropdown Styling */
+/* Ensure the dropdown appears in front */
+.dropdown-menu {
+  background: rgb(0, 184, 255);
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1050 !important; /* Higher than other elements */
+  position: absolute !important;
+}
+
+/* Fix overlapping issue */
+.navbar {
+  position: relative;
+  z-index: 1000; /* Lower than dropdown */
+}
+
+/* Dropdown Item Styling */
+.dropdown-item {
+  font-weight: bold;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  color: white;
+}
+
+.dropdown-item:hover {
+  background: none; /* Soft Violet */
+  color: #fbff00 !important;
+}
+
+/* Logout Button */
+.logout-btn button {
+  background: transparent;
+  color: #c77dff;
+  border: 2px solid #c77dff;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  padding: 5px 15px;
+}
+
+.logout-btn button:hover {
+  background: #c77dff;
+  color: white;
+}
+
+/* Mobile Adjustments */
 @media screen and (max-width: 525px) {
   .logout-btn {
-    margin-left: 300px;
+    margin-left: auto;
+  }
+
+  .nav-link {
+    padding: 10px;
+    text-align: center;
   }
 }
 
 @media screen and (max-width: 375px) {
   .logout-btn {
-    margin-left: 250px;
+    margin-left: auto;
   }
 }

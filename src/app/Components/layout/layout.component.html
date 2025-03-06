@@ -59,27 +59,40 @@
             >About</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item dropdown">
           <a
-            class="nav-link text-white fw-bold"
-            routerLink="weather"
-            routerLinkActive="router-link-active"
-            style="transition: color 0.3s ease-in-out"
-            onmouseover="this.style.color='#f8b400';"
-            onmouseout="this.style.color='white';"
-            >Weather</a
+            class="nav-link text-white fw-bold dropdown-toggle"
+            data-bs-toggle="dropdown"
+            role="button"
+            aria-expanded="false"
+            >Applications</a
           >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link text-white fw-bold"
-            routerLink="calc"
-            routerLinkActive="router-link-active"
-            style="transition: color 0.3s ease-in-out"
-            onmouseover="this.style.color='#f8b400';"
-            onmouseout="this.style.color='white';"
-            >Calculator</a
-          >
+          <ul class="dropdown-menu" style="background: rgb(0, 184, 255)">
+            <li>
+              <a
+                class="dropdown-item fw-bold"
+                routerLink="weather"
+                routerLinkActive="router-link-active"
+                >Weather</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item fw-bold"
+                routerLink="calc"
+                routerLinkActive="router-link-active"
+                >Calculator</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item fw-bold"
+                routerLink="crud-w-localstorage"
+                routerLinkActive="router-link-active"
+                >Crud App</a
+              >
+            </li>
+          </ul>
         </li>
       </ul>
       <div class="logout-btn">

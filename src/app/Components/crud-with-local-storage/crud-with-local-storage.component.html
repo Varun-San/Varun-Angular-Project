@@ -1,0 +1,140 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- User List View -->
+    <div class="col-12" *ngIf="isNewUser">
+      <div class="card shadow">
+        <div class="card-header text-white d-flex justify-content-between">
+          <h5>User List</h5>
+          <button class="btn" (click)="changeView()">Add New User</button>
+        </div>
+        <div class="card-body">
+          <table class="table table-hover">
+            <thead class="table-primary">
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip Code</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users; let i = index">
+                <td>{{ user.fName }}</td>
+                <td>{{ user.lName }}</td>
+                <td>{{ user.uName }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.state }}</td>
+                <td>{{ user.zipCode }}</td>
+                <td>
+                  <button
+                    class="btn btn-primary btn-sm me-2"
+                    (click)="editUser(i)"
+                  >
+                    Edit
+                  </button>
+                  <button class="btn btn-danger btn-sm" (click)="deleteUser(i)">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+              <tr *ngIf="users.length === 0">
+                <td colspan="7" class="text-center text-muted">
+                  No users found
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- New User Form View -->
+    <div class="col-12" *ngIf="!isNewUser">
+      <div class="card shadow">
+        <div class="card-header text-white d-flex justify-content-between">
+          <h5>Add New User</h5>
+          <button class="btn" (click)="changeView()">List View</button>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="addUser()">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="form-label">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="userForm.fName"
+                  name="fName"
+                  required
+                />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="userForm.lName"
+                  name="lName"
+                  required
+                />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="userForm.uName"
+                  name="uName"
+                  required
+                />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="userForm.city"
+                  name="city"
+                  required
+                />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">State</label>
+                <select
+                  class="form-select"
+                  [(ngModel)]="userForm.state"
+                  name="state"
+                  required
+                >
+                  <option value="" disabled selected>Select a state</option>
+                  <option *ngFor="let state of states" [value]="state">
+                    {{ state }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label">Zip Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="userForm.zipCode"
+                  name="zipCode"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">
+                  {{ editIndex === null ? "Add User" : "Save Changes" }}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

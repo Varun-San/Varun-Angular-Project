@@ -7,6 +7,7 @@ import { authGuard } from './Guard/auth.guard';
 import { WeatherappComponent } from './Components/weatherapp/weatherapp.component';
 import { PersonalPageComponent } from './Components/personal-page/personal-page.component';
 import { CalcComponent } from './Components/calc/calc.component';
+import { CrudWithLocalStorageComponent } from './Components/crud-with-local-storage/crud-with-local-storage.component';
 
 export const routes: Routes = [
   {
@@ -48,6 +49,10 @@ export const routes: Routes = [
       {
         path: 'calc',
         component: CalcComponent,
+      },
+      {
+        path: 'crud-w-localstorage',
+        component: CrudWithLocalStorageComponent,
       },
     ],
   },
