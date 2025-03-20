@@ -8,6 +8,7 @@ import { WeatherappComponent } from './Components/weatherapp/weatherapp.componen
 import { PersonalPageComponent } from './Components/personal-page/personal-page.component';
 import { CalcComponent } from './Components/calc/calc.component';
 import { CrudWithLocalStorageComponent } from './Components/crud-with-local-storage/crud-with-local-storage.component';
+import { AngularComponentComponent } from './Components/Angular Components/angular-component.component';
 
 export const routes: Routes = [
   {
@@ -53,6 +54,10 @@ export const routes: Routes = [
       {
         path: 'crud-w-localstorage',
         component: CrudWithLocalStorageComponent,
+      },
+      {
+        path: 'angular-components',
+        component: AngularComponentComponent,
       },
     ],
   },
