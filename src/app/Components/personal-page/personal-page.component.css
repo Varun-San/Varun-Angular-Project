@@ -2,8 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 /* General Styles */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
   font-family: "Poppins", sans-serif;
   color: #fff;
   margin: 0;
@@ -11,23 +15,27 @@ body {
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1350px;
   margin: auto;
   padding: 20px;
 }
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(45deg, rgb(0, 198, 255), rgb(0, 123, 255));
+  background: linear-gradient(45deg, #00c6ff, #007bff);
   color: white;
-  padding: 30px 20px;
-  border-radius: 20px;
+  padding: 50px 20px;
+  border-radius: 25px;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hero-section .highlight {
   color: #ffd700;
+}
+
+.hero-section h1 {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* About Section */
@@ -38,10 +46,10 @@ body {
   align-items: center;
   background: white;
   color: black;
-  border-radius: 20px;
-  padding: 40px;
-  margin-top: 40px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  padding: 50px 30px;
+  margin-top: 50px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .about-img {
@@ -51,16 +59,16 @@ body {
 }
 
 .profile-img {
-  height: 280px;
-  width: 280px;
-  border-radius: 30%;
-  border: 5px solid white;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 260px;
+  width: 260px;
+  border-radius: 50%;
+  border: 4px solid #f1f1f1;
+  transition: all 0.4s ease;
 }
 
 .profile-img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.07);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
 }
 
 .about-text {
@@ -70,65 +78,69 @@ body {
 }
 
 /* Buttons */
-.custom-btn {
-  background: #ff9e79;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 30px;
+.custom-btn,
+.custom-outline-btn {
+  padding: 14px 28px;
+  border-radius: 50px;
   font-weight: bold;
-  transition: 0.3s;
+  transition: all 0.4s ease;
   text-decoration: none;
   display: inline-block;
 }
 
-.custom-btn:hover {
+.custom-btn {
   background: #ff9e79;
-  transform: scale(1.05);
+  color: white;
+  border: none;
+}
+
+.custom-btn:hover {
+  background: #ff784f;
+  transform: translateY(-3px) scale(1.05);
 }
 
 /* Outline Button */
 .custom-outline-btn {
   border: 2px solid #ff7e5f;
   color: #ff7e5f;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-weight: bold;
-  transition: 0.3s;
-  text-decoration: none;
-  display: inline-block;
 }
 
 .custom-outline-btn:hover {
   background: #ff7e5f;
   color: white;
+  transform: translateY(-3px) scale(1.05);
 }
 
 /* Contact Section */
 .contact-section {
   background: white;
   color: black;
-  padding: 40px;
-  border-radius: 20px;
-  margin-top: 40px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 50px;
+  border-radius: 25px;
+  margin-top: 50px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .social-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .contact-section .btn {
-  padding: 6px 10px;
+  padding: 10px 20px;
   border-radius: 30px;
   font-weight: bold;
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+
+/* Fix icon color inside buttons */
+.contact-section i {
+  color: white;
 }
 
 /* LinkedIn Button */
@@ -136,16 +148,19 @@ body {
   background: #0077b5;
   color: white;
 }
-
 .custom-linkedin-btn:hover {
   background: #005582;
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 
 /* GitHub Button */
 .custom-github-btn {
   background: #333;
   color: white;
+}
+.custom-github-btn:hover {
+  background: #222;
+  transform: scale(1.07);
 }
 
 /* Instagram Button */
@@ -154,12 +169,8 @@ body {
   color: white;
 }
 .custom-instagram-btn:hover {
-  transform: scale(1.05);
-}
-
-.custom-github-btn:hover {
-  background: #222;
-  transform: scale(1.05);
+  background-color: #a02c6a;
+  transform: scale(1.07);
 }
 
 /* Responsive Design */
@@ -170,7 +181,11 @@ body {
   }
 
   .profile-img {
-    width: 220px;
-    height: 220px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .contact-section {
+    padding: 30px;
   }
 }

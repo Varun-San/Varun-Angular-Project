@@ -1,35 +1,40 @@
 <div class="full-page">
-  <div class="glass-card">
+  <mat-card class="glass-card mat-elevation-z8">
     <div class="text-center">
       <img src="Images/LOGO (3).png" class="profile-img" alt="Angular Login" />
     </div>
-    <div class="card-body">
+    <mat-card-content>
       <h2 class="text-center text-white fw-bold">Personal Login</h2>
-      <div class="mb-3">
-        <div class="col-12 mb-2">
-          <label for="emailId" class="form-label">Email</label>
+      <form>
+        <mat-form-field appearance="fill" class="w-100 mb-3">
+          <mat-label>Email</mat-label>
           <input
+            matInput
             type="email"
-            class="form-control"
-            id="emailId"
             placeholder="Enter your email..."
             [(ngModel)]="loginObj.EmailId"
+            name="emailId"
             required
           />
-        </div>
-        <div class="col-12 mb-2">
-          <label for="password" class="form-label">Password</label>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100 mb-3">
+          <mat-label>Password</mat-label>
           <input
+            matInput
             type="password"
-            class="form-control"
-            id="password"
             placeholder="Enter your password..."
             [(ngModel)]="loginObj.Password"
+            name="password"
             required
           />
-        </div>
-      </div>
-      <button type="submit" class="login-btn" (click)="login()">Login</button>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="login-btn" (click)="login()">
+          Login
+        </button>
+      </form>
+
       <div
         *ngIf="message"
         [ngClass]="{
@@ -40,6 +45,6 @@
       >
         {{ message }}
       </div>
-    </div>
-  </div>
+    </mat-card-content>
+  </mat-card>
 </div>

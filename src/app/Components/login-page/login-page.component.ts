@@ -3,10 +3,22 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Login } from '../../Model/login';
 import { Router } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login-page',
-  imports: [CommonModule, FormsModule],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css',
 })
@@ -17,14 +29,11 @@ export class LoginPageComponent {
   hardcodedUsers = [
     { email: 'test@123gmail.com', password: '123' },
     { email: 'varun', password: 'Vs@1718' },
-    {
-      email: 'sathiya',
-      password: 'Vs@1718',
-    },
+    { email: 'sathiya', password: 'Vs@1718' },
   ];
 
-  message: string = ''; // To store the login message
-  messageType: string = ''; // To control the message style (success/error)
+  message: string = '';
+  messageType: string = '';
 
   login() {
     const user = this.hardcodedUsers.find(
@@ -40,7 +49,7 @@ export class LoginPageComponent {
       this.messageType = 'success';
       setTimeout(() => {
         this.router.navigateByUrl('personal');
-      }, 1000); // Redirect after 1.5 seconds
+      }, 1000);
     } else {
       this.message = 'Invalid credentials! Try again.';
       this.messageType = 'error';

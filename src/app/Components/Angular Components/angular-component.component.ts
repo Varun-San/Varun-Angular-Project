@@ -22,7 +22,18 @@ import { MatDividerModule } from '@angular/material/divider';
 
 //? Button Toggle
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+
+//! Configurable Check box
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+
+//? Chips
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { computed, inject, model } from '@angular/core';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 export interface State {
   flag: string;
@@ -48,7 +59,17 @@ export interface State {
     MatIconModule,
     MatDividerModule,
     MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatRadioModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    FormsModule,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './angular-component.component.html',
   styleUrls: ['./angular-component.component.css'],
 })
@@ -104,5 +125,64 @@ export class AngularComponentComponent {
 
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
+  }
+
+  // Configurable Check box
+  readonly checked = signal(false);
+  readonly indeterminate = signal(false);
+  readonly labelPosition = signal<'before' | 'after'>('after');
+  readonly disabled = signal(false);
+
+  // Chips
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  readonly currentFruit = model('');
+  readonly fruits = signal(['Lemon']);
+  readonly allFruits: string[] = [
+    'Apple',
+    'Lemon',
+    'Lime',
+    'Orange',
+    'Strawberry',
+  ];
+  readonly filteredFruits = computed(() => {
+    const currentFruit = this.currentFruit().toLowerCase();
+    return currentFruit
+      ? this.allFruits.filter((fruit) =>
+          fruit.toLowerCase().includes(currentFruit)
+        )
+      : this.allFruits.slice();
+  });
+
+  readonly announcer = inject(LiveAnnouncer);
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.fruits.update((fruits) => [...fruits, value]);
+    }
+
+    // Clear the input value
+    this.currentFruit.set('');
+  }
+
+  remove(fruit: string): void {
+    this.fruits.update((fruits) => {
+      const index = fruits.indexOf(fruit);
+      if (index < 0) {
+        return fruits;
+      }
+
+      fruits.splice(index, 1);
+      this.announcer.announce(`Removed ${fruit}`);
+      return [...fruits];
+    });
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.fruits.update((fruits) => [...fruits, event.option.viewValue]);
+    this.currentFruit.set('');
+    event.option.deselect();
   }
 }
