@@ -370,3 +370,180 @@
     </form>
   </div>
 </div>
+
+<!-- Dialog -->
+<div class="row m-3">
+  <div class="col-12">
+    <h2>Expansion panel</h2>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title> This is the expansion title </mat-panel-title>
+          <mat-panel-description>
+            This is a summary of the content
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>This is the primary content of the panel.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel
+        (opened)="panelOpenState.set(true)"
+        (closed)="panelOpenState.set(false)"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Self aware panel </mat-panel-title>
+          <mat-panel-description>
+            Currently I am {{ panelOpenState() ? "open" : "closed" }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+
+<!-- Form field -->
+<div class="row m-3">
+  <div class="col-12">
+    <h2>Form Field</h2>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Fill form field</mat-label>
+        <input matInput placeholder="Placeholder" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Outline form field</mat-label>
+        <input matInput placeholder="Placeholder" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
+  </div>
+</div>
+
+<!-- Grid Layout  -->
+<div class="row m-3">
+  <div class="col-12">
+    <h2>Grid Layout</h2>
+    <mat-grid-list cols="4" rowHeight="200px">
+      @for (tile of tiles; track tile) {
+      <mat-grid-tile
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color"
+        >{{ tile.text }}</mat-grid-tile
+      >
+      }
+    </mat-grid-list>
+  </div>
+</div>
+
+<!-- Icon -->
+<div class="row m-3">
+  <div class="col-12">
+    <h2>Icon</h2>
+    <mat-icon
+      svgIcon="thumbs-up"
+      aria-hidden="false"
+      aria-label="Example thumbs up SVG icon"
+    ></mat-icon>
+    <mat-icon
+      svgIcon="thumbs-up"
+      aria-hidden="false"
+      aria-label="Example thumbs up SVG icon"
+    ></mat-icon
+    ><mat-icon
+      svgIcon="thumbs-up"
+      aria-hidden="false"
+      aria-label="Example thumbs up SVG icon"
+    ></mat-icon
+    ><mat-icon
+      svgIcon="thumbs-up"
+      aria-hidden="false"
+      aria-label="Example thumbs up SVG icon"
+    ></mat-icon
+    ><mat-icon
+      svgIcon="thumbs-up"
+      aria-hidden="false"
+      aria-label="Example thumbs up SVG icon"
+    ></mat-icon>
+  </div>
+</div>
+
+<!-- List -->
+<div class="row m-3">
+  <div class="col-12">
+    <h2>List</h2>
+    <form [formGroup]="form">
+      <mat-selection-list
+        #shoesList
+        [formControl]="shoesControl"
+        name="shoes"
+        [multiple]="false"
+      >
+        @for (shoe of shoes; track shoe) {
+        <mat-list-option [value]="shoe.value">{{ shoe.name }}</mat-list-option>
+        }
+      </mat-selection-list>
+      <p>
+        Option selected:
+        {{ shoesControl.value ? shoesControl.value[0] : "None" }}
+      </p>
+    </form>
+    <!-- List 2 -->
+    <h2>List - 2</h2>
+    <mat-list>
+      <div mat-subheader>Folders</div>
+      @for (folder of folders; track folder) {
+      <mat-list-item>
+        <mat-icon matListItemIcon>folder</mat-icon>
+        <div matListItemTitle>{{ folder.name }}</div>
+        <div matListItemLine>{{ folder.updated | date }}</div>
+      </mat-list-item>
+      }
+      <mat-divider></mat-divider>
+      <div mat-subheader>Notes</div>
+      @for (note of notes; track note) {
+      <mat-list-item>
+        <mat-icon matListItemIcon>note</mat-icon>
+        <div matListItemTitle>{{ note.name }}</div>
+        <div matListItemLine>{{ note.updated | date }}</div>
+      </mat-list-item>
+      }
+    </mat-list>
+  </div>
+</div>
+
+<!-- Menu -->
+<div class="row m-3">
+  <div class="col-12">
+    <h2>Menu Icons</h2>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>
+
+<!-- Paginator -->
+

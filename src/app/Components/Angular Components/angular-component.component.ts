@@ -2,6 +2,8 @@
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { ViewChild, ElementRef } from '@angular/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 // AutoComplete
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,6 +37,59 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
+//! Expansion Panel
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
+
+//? Grid Layout
+import { MatGridListModule } from '@angular/material/grid-list';
+
+//! Icon
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
+
+//? List
+import { FormGroup } from '@angular/forms';
+import { MatListModule } from '@angular/material/list';
+
+//! List - 2
+import { DatePipe } from '@angular/common';
+
+//? Paginator
+import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
+import { JsonPipe } from '@angular/common';
+
+export interface Section {
+  name: string;
+  updated: Date;
+}
+
+interface Shoes {
+  value: string;
+  name: string;
+}
+
+// Grid layout
+
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
+
+// Icon
+const THUMBUP_ICON = `
+   <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+             2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 
+             3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 
+             3.78-3.4 6.86-8.55 11.54L12 21.35z" 
+          fill="currentColor"/>
+  </svg>
+`;
+
 export interface State {
   flag: string;
   name: string;
@@ -45,12 +100,12 @@ export interface State {
   selector: 'app-angular-component',
   standalone: true,
   imports: [
+    JsonPipe,
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
@@ -63,11 +118,19 @@ export interface State {
     MatCheckboxModule,
     FormsModule,
     MatRadioModule,
-    MatFormFieldModule,
     MatChipsModule,
-    MatIconModule,
     MatAutocompleteModule,
     FormsModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatGridListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatListModule,
+    DatePipe,
+    MatMenuModule,
+    MatPaginatorModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './angular-component.component.html',
@@ -110,6 +173,23 @@ export class AngularComponentComponent {
       startWith(''),
       map((state) => (state ? this._filterStates(state) : this.states.slice()))
     );
+
+    //! Icon
+    const iconRegistry = inject(MatIconRegistry);
+    const sanitizer = inject(DomSanitizer);
+
+    // Note that we provide the icon here as a string literal here due to a limitation in
+    // Stackblitz. If you want to provide the icon from a URL, you can use:
+    // `iconRegistry.addSvgIcon('thumbs-up', sanitizer.bypassSecurityTrustResourceUrl('icon.svg'));`
+    iconRegistry.addSvgIconLiteral(
+      'thumbs-up',
+      sanitizer.bypassSecurityTrustHtml(THUMBUP_ICON)
+    );
+
+    //? List
+    this.form = new FormGroup({
+      clothes: this.shoesControl,
+    });
   }
 
   private _filterStates(value: string): State[] {
@@ -185,4 +265,55 @@ export class AngularComponentComponent {
     this.currentFruit.set('');
     event.option.deselect();
   }
+
+  //! Expansion pannel
+  readonly panelOpenState = signal(false);
+
+  //! Grid Layout
+  tiles: Tile[] = [
+    { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
+    { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
+    { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
+    { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
+  ];
+
+  //! List selections
+  form: FormGroup;
+  shoes: Shoes[] = [
+    { value: 'boots', name: 'Boots' },
+    { value: 'clogs', name: 'Clogs' },
+    { value: 'loafers', name: 'Loafers' },
+    { value: 'moccasins', name: 'Moccasins' },
+    { value: 'sneakers', name: 'Sneakers' },
+  ];
+  shoesControl = new FormControl();
+
+  //! List - 2
+  folders: Section[] = [
+    {
+      name: 'Photos',
+      updated: new Date('1/1/16'),
+    },
+    {
+      name: 'Recipes',
+      updated: new Date('1/17/16'),
+    },
+    {
+      name: 'Work',
+      updated: new Date('1/28/16'),
+    },
+  ];
+  notes: Section[] = [
+    {
+      name: 'Vacation Itinerary',
+      updated: new Date('2/20/16'),
+    },
+    {
+      name: 'Kitchen Remodel',
+      updated: new Date('1/18/16'),
+    },
+  ];
+
+  //! Paginator
+ 
 }
